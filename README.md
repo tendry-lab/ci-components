@@ -1,6 +1,6 @@
 ## Introduction
 
-Various GitHub workflow actions used in different projects.
+Various GitHub actions used in different projects.
 
 ## License
 
