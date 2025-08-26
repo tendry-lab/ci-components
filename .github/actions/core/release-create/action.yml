@@ -1,0 +1,44 @@
+name: "Create GitHub Release"
+description: "Downloads artifacts and creates a GitHub release"
+
+inputs:
+  DOWNLOAD_ARTIFACT_NAME:
+    description: "Release artifacts unique identifier"
+    required: true
+  DOWNLOAD_ARTIFACT_PATH:
+    description: "Path where to download release artifacts"
+    required: true
+  RELEASE_ARCHIVE_NAME:
+    description: "Release archive name"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.DOWNLOAD_ARTIFACT_NAME }}
+        path: ${{ inputs.DOWNLOAD_ARTIFACT_PATH }}
+
+    - name: Prepare artifacts archive
+      shell: bash
+      run: |
+        set -xe
+
+        cd ${{ inputs.DOWNLOAD_ARTIFACT_PATH }}
+        zip -r ${{ inputs.RELEASE_ARCHIVE_NAME }} ./*
+
+    - name: Create release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: |
+        set -xe
+
+        RELEASE_TITLE="Release ${{ github.ref_name }}"
+
+        gh release create ${{ github.ref_name }} \
+          --title "$RELEASE_TITLE" \
+          --repo ${{ github.repository }} \
+          ./${{ inputs.DOWNLOAD_ARTIFACT_PATH }}/*.zip
