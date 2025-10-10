@@ -2,9 +2,6 @@ name: "Create GitHub Release"
 description: "Downloads artifacts and creates a GitHub release"
 
 inputs:
-  DOWNLOAD_ARTIFACT_NAME:
-    description: "Release artifacts unique identifier"
-    required: true
   DOWNLOAD_ARTIFACT_PATH:
     description: "Path where to download release artifacts"
     required: true
@@ -18,7 +15,6 @@ runs:
     - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: ${{ inputs.DOWNLOAD_ARTIFACT_NAME }}
         path: ${{ inputs.DOWNLOAD_ARTIFACT_PATH }}
 
     - name: Prepare artifacts archive
