@@ -1,3 +1,5 @@
+[![ci-components](https://github.com/tendry-lab/ci-components/actions/workflows/build.yml/badge.svg)](https://github.com/tendry-lab/ci-components/actions/workflows/build.yml)
+
 ## Introduction
 
 GitHub Actions for automated build and release workflows. Firmware compilation, release automation, artifact management.
