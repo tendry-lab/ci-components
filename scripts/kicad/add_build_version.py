@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# SPDX-FileCopyrightText: 2025 Tendry Lab
+# SPDX-License-Identifier: Apache-2.0
+
 import pcbnew
 import os
 import sys
