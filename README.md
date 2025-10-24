@@ -1,6 +1,14 @@
 ## Introduction
 
-Various GitHub actions used in different projects.
+GitHub Actions for automated build and release workflows. Firmware compilation, release automation, artifact management.
+
+## Features
+
+- ESP-IDF build automation
+- Release artifact generation
+- Version management
+- FreeCAD STEP export automation
+- KiCAD PCB version stamping
 
 ## License
 
