@@ -1,0 +1,28 @@
+name: ci-components
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_PATH: project
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.SOURCE_PATH }}
+
+      - name: check license headers
+        env:
+          CI_COMPONENTS_PATH: ${{ env.SOURCE_PATH }}
+          PROJECT_PATH: ${{ env.SOURCE_PATH }}
+        shell: bash
+        run: |
+          ${{ ENV.SOURCE_PATH }}/scripts/fmt/check_license.sh
