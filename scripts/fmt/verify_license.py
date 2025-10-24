@@ -30,7 +30,7 @@ SKIP_DIRS = {'.git', 'node_modules', 'build', 'dist', '.astro', 'coverage'}
 
 def get_license(file_name: str) -> tuple[str, str]:
     """Returns (license_text, comment_start) tuple"""
-    if file_name.endswith((".cpp", ".h", ".c", ".ts", ".tsx", ".js", ".css")):
+    if file_name.endswith((".cpp", ".h", ".c", ".ts", ".tsx", ".js", ".css", ".go")):
         return (license_text_cpp, "/*")
 
     if file_name.endswith((".html", ".astro")):
