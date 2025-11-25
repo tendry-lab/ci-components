@@ -7,6 +7,9 @@ inputs:
   PRODUCT_NAME:
     description: "Product name"
     required: true
+  COMPANY_UUID:
+    description: "Company unique identifier"
+    required: true
   BUILD_VERSION:
     description: "Build version"
     required: true
@@ -45,3 +48,4 @@ runs:
         echo "CONFIG_OCS_CORE_FW_NAME=\"${{ inputs.PROJECT_NAME }}\"" >> "${{ inputs.BUILD_CONFIG_PATH }}"
         echo "CONFIG_OCS_CORE_FW_DESCRIPTION=\"$FW_DESCRIPTION\"" >> "${{ inputs.BUILD_CONFIG_PATH }}"
         echo "CONFIG_OCS_CORE_PRODUCT_NAME=\"${{ inputs.PRODUCT_NAME }}\"" >> "${{ inputs.BUILD_CONFIG_PATH }}"
+        echo "CONFIG_OCS_CORE_COMPANY_UUID=\"${{ inputs.COMPANY_UUID }}\"" >> "${{ inputs.BUILD_CONFIG_PATH }}"
